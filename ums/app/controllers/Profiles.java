@@ -22,7 +22,7 @@ public class Profiles extends CRUD{
 	}
 	
 	/**
-	 * Endpoint for creating or updating profile object
+	 * An endpoint for creating/updating a profile 
 	 * @param firstName
 	 * @param lastName
 	 * @param address
