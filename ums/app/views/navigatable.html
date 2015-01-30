@@ -1,0 +1,23 @@
+#{extends 'main.html' /}
+
+<nav class="navbar navbar-custom">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav">
+			<li><a class="white-text transparent-hover" href="@{Application.index}">AMSA</a></li>
+        	#{if user}
+        		<li><a class="white-text transparent-hover" href="@{Profiles.show}"> ${user.firstName}</a></li>
+				<li><a class="white-text transparent-hover" href="@{Users.users}">Users</a></li>
+        		<li><a class="white-text transparent-hover" href="@{Secure.logout}">Log out</a></li>
+			#{/if}
+			#{else}
+        		<li><a class="white-text transparent-hover" href="@{Users.signup}">Sign up</a></li>
+				<li>
+					#{include 'Users/tags/loginForm.html'/}
+				</li>
+			#{/else}
+		</ul>
+	</div>
+</nav>
+<div>
+	#{doLayout /}
+</div>

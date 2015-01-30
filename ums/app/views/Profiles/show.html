@@ -1,0 +1,28 @@
+#{extends '/navigatable.html' /}
+#{set title:'My Profile'/}
+<div class="container-fluid">
+	#{if applicationStatus}
+		<h5>Applciation Status : #{applicationStatusTag
+			applicationStatus:applicationStatus/}
+		</h5>
+	#{/if}
+	<div class="col-lg-6 col-lg-offset-1  col-md-6 col-md-offset-1 top10">
+
+		#{form @Profiles.createProfile()}
+		<div>
+			#{include 'Profiles/tags/showFormInputs.html'/}
+			<div class="form-group">
+				<input type="submit"
+					class="btn btn-primary col-lg-3 col-lg-offset-1" name="Save"
+					value="Save" />
+			</div>
+
+			<div class="form-group">
+				<input type="submit"
+					class="btn btn-success col-lg-5 col-lg-offset-2" name="Submit"
+					value="Submit Applciation" />
+			</div>
+		</div>
+		#{/form}
+	</div>
+</div>

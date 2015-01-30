@@ -1,0 +1,50 @@
+<div class="row">
+	<div class="form-group col-lg-6 col-md-6">
+		<input type="text" class="form-control" name="firstName"
+			value="${user?.firstName}" required />
+	</div>
+	<div class="form-group col-lg-6 col-md-6">
+		<input type="text" class="form-control" name="lastName"
+			value="${user?.lastName}" required />
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label"> Address </label> <input type="text"
+		class="form-control" name="address" placeholder="123 Main street" value = "${profile?.address}"/>
+</div>
+<div class="form-group">
+	<label class="control-label"> Address 2 </label> <input type="text"
+		class="form-control" name="address2" placeholder="apt 3a..." value = "${profile?.address2}"/>
+</div>
+<div class="row">
+	<div class="form-group col-lg-6 col-md-6">
+		<label class="control-label"> City </label> <input type="text"
+			class="form-control" name="city" 
+			placeholder="New York..." value = "${profile?.city}"/>
+	</div>
+	<div class="form-group col-lg-3 col-md-3">
+		<label class="control-label"> Zip </label> <input type="text"
+			class="form-control" name="postalCode" 
+			placeholder="01234..." value = "${profile?.postalCode}"/>
+	</div>
+	<div class="form-group col-lg-3 col-md-3">
+		<label class="control-label"> State </label> <input type="text"
+			class="form-control" name="state" 
+			placeholder="NY..." value = "${profile?.city}"/>
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label"> University Email </label> <input
+		type="text" class="form-control" name="emailCollege" 
+		placeholder="bat@college.edu" value = "${profile?.emailCollege}"/>
+</div>
+<div class="form-group">
+	<label class="control-label"> Personal Email </label> <input
+		type="text" class="form-control" name="emailPersonal" 
+		placeholder="bat@gmail.com" value ="${profile?.emailPersonal}"/>
+</div>
+<div class="form-group">
+	<label class="control-label"> Reason for Application </label>
+	<textarea class="form-control" name="reasonForApplication" rows="4" 
+			placeholder="I love Amsa ...">${profile?.reasonForApplication}</textarea>
+</div>
