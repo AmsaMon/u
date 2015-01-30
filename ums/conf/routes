@@ -5,11 +5,29 @@
 # Home page
 GET     /                                       Application.index
 
+# Admin								Users.list
+GET		/admin/users/{id}						Users.show
+POST 	/users/edit								Users.edit
+GET		/admin/showProfile/{userId}				Admin.showProfile
+POST 	/admin/createProfile					Admin.createProfile
+
+# Users
+GET		/signup									Users.signup
+GET		/login									Users.login
+
+# Profiles
+GET 	/profiles/show							Profiles.show
+POST 	/profiles/create						Profiles.create
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
 
+# Import CRUD routes
+*     	/admin           						module:crud
+# Import Secure routes
+*       /                                       module:secure
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
