@@ -11,6 +11,9 @@ import play.mvc.With;
 @With(Security.class)
 public class Profiles extends CRUD{
 	
+	/**
+	 * Renders the page for the user's profile
+	 */
 	public static void show() {
 		Profile profile = Security.getCurrentUser().getProfile();
 		String applicationStatus = ((profile != null && profile.getApplicationStatus() != null) 
@@ -18,6 +21,19 @@ public class Profiles extends CRUD{
 		render(profile, applicationStatus);
 	}
 	
+	/**
+	 * An endpoint for creating/updating a profile 
+	 * @param firstName
+	 * @param lastName
+	 * @param address
+	 * @param address2
+	 * @param city
+	 * @param postalCode
+	 * @param state
+	 * @param emailCollege
+	 * @param emailPersonal
+	 * @param reasonForApplication
+	 */
 	public static void createProfile(
 			String firstName,
 			String lastName,
@@ -37,6 +53,21 @@ public class Profiles extends CRUD{
 		Application.index();
 	}
 	
+	/**
+	 * Create or update profile
+	 * @param user
+	 * @param firstName
+	 * @param lastName
+	 * @param address
+	 * @param address2
+	 * @param city
+	 * @param postalCode
+	 * @param state
+	 * @param emailCollege
+	 * @param emailPersonal
+	 * @param reasonForApplication
+	 * @param isSubmitted
+	 */
 	@Util
 	public static void saveProfile(
 			User user,
