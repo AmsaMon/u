@@ -22,19 +22,9 @@ public class Profiles extends CRUD{
 	}
 	
 	/**
-	 * An endpoint for creating/updating a profile 
-	 * @param firstName
-	 * @param lastName
-	 * @param address
-	 * @param address2
-	 * @param city
-	 * @param postalCode
-	 * @param state
-	 * @param emailCollege
-	 * @param emailPersonal
-	 * @param reasonForApplication
+	 * An endpoint for creating/updating a profile
 	 */
-	public static void createProfile(
+	public static void saveProfile(
 			String firstName,
 			String lastName,
 			String address,
@@ -46,10 +36,29 @@ public class Profiles extends CRUD{
 			String emailPersonal,
 			String reasonForApplication) {
 		User user = Security.getCurrentUser();
-		boolean isSubmitted = request.params.get("Submit") != null;
-		saveProfile(user, firstName, lastName, address,
+		saveOrSubmit(user, firstName, lastName, address,
 			address2, city, postalCode, state,
-			emailCollege, emailPersonal, reasonForApplication, isSubmitted);
+			emailCollege, emailPersonal, reasonForApplication, false);
+	}
+	
+	/**
+	 * An endpoint for creating/updating a profile
+	 */
+	public static void submitApplication(
+			String firstName,
+			String lastName,
+			String address,
+			String address2,
+			String city,
+			String postalCode, 
+			String state,
+			String emailCollege,
+			String emailPersonal,
+			String reasonForApplication) {
+		User user = Security.getCurrentUser();
+		saveOrSubmit(user, firstName, lastName, address,
+			address2, city, postalCode, state,
+			emailCollege, emailPersonal, reasonForApplication, true);
 		Application.index();
 	}
 	
@@ -69,7 +78,7 @@ public class Profiles extends CRUD{
 	 * @param isSubmitted
 	 */
 	@Util
-	public static void saveProfile(
+	public static void saveOrSubmit(
 			User user,
 			String firstName,
 			String lastName,
@@ -110,12 +119,12 @@ public class Profiles extends CRUD{
 		profile.setEmailCollege(emailCollege);
 		profile.setEmailPersonal(emailPersonal);
 		profile.setReasonForApplication(reasonForApplication);
-		if (isSubmitted) {
+		ApplicationStatus status = profile.getApplicationStatus();
+		if (isSubmitted && (status == null || ApplicationStatus.None.equals(status))) {
 			profile.setApplicationStatus(ApplicationStatus.Pending);
 		} else if (profile.getApplicationStatus() == null) {
 			profile.setApplicationStatus(ApplicationStatus.None);
 		}
 		profile.save();
 	}
-
 }

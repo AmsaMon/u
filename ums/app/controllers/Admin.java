@@ -26,7 +26,7 @@ public class Admin extends Controller{
 			String reasonForApplication) {
 		User user = User.findById(userId);
 		boolean isSubmitted = request.params.get("Submit") != null;
-		Profiles.saveProfile(user, firstName, lastName, address, address2, 
+		Profiles.saveOrSubmit(user, firstName, lastName, address, address2, 
 				city, postalCode, state, emailCollege, emailPersonal, 
 				reasonForApplication, isSubmitted);
 		Users.users();

@@ -6,8 +6,9 @@ public class Security extends Secure.Security {
 	
 	@Before
     public static void setConnectedUser() {
+		User user = null;
         if(Security.isConnected()) {
-            User user = User.find("byEmail", Security.connected()).first();
+            user = User.find("byEmail", Security.connected()).first();
             renderArgs.put("isConnected", true);
             renderArgs.put("user", user);
         }
@@ -41,6 +42,9 @@ public class Security extends Secure.Security {
 	}
 	
 	public static User getCurrentUser() {
+		if (!Security.isConnected()) {
+			return null;
+		}
 		return (User)renderArgs.get("user");
 	}
 }
