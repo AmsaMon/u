@@ -5,8 +5,8 @@ var saveProfile = function(window){
 			    obj[item.name] = item.value;
 			    return obj;
 			}, {});
+			//TODO: handle success and errors
 			$.post(window.saveProfile(data), function(undefined, status) {
-				//alert("Status: " + status);
 			});
 		});
 	};
