@@ -1,14 +1,14 @@
 package controllers;
 
 import play.mvc.Before;
+import play.mvc.Util;
 import models.User;
 public class Security extends Secure.Security {
-	
-	@Before
+	@Util
     public static void setConnectedUser() {
 		User user = null;
         if(Security.isConnected()) {
-            user = User.find("byEmail", Security.connected()).first();
+            user = User.find("byEmail", connected()).first();
             renderArgs.put("isConnected", true);
             renderArgs.put("user", user);
         }
@@ -36,7 +36,8 @@ public class Security extends Secure.Security {
 	
 	static boolean check(String profile) {
 	    if("admin".equals(profile)) {
-	        return User.find("byEmail", connected()).<User>first().isAdmin();
+	    	User user = getCurrentUser();
+	        return (user == null) ? false :user.isAdmin();
 	    }
 	    return false;
 	}
@@ -45,6 +46,6 @@ public class Security extends Secure.Security {
 		if (!Security.isConnected()) {
 			return null;
 		}
-		return (User)renderArgs.get("user");
+		return User.find("byEmail", connected()).<User>first();
 	}
 }

@@ -5,11 +5,17 @@ import java.sql.Date;
 import models.Profile;
 import models.Profile.ApplicationStatus;
 import models.User;
+import play.mvc.Before;
 import play.mvc.Util;
 import play.mvc.With;
 
-@With(Security.class)
+@With(Secure.class)
 public class Profiles extends CRUD{
+	
+	@Before
+    static void setConnectedUser() {
+        Security.setConnectedUser();
+    }
 	
 	/**
 	 * Renders the page for the user's profile
