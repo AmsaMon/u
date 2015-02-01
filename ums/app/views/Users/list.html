@@ -1,19 +1,19 @@
 #{extends '/crud/layout.html' /}
-#{set title:messages.get('crud.list.title', type.name) /}
+#{set title:'Хэрэглэгчид' /}
 
 <div id="crudList" class="${type.name}">
 
-    <h2 id="crudListTitle">&{'crud.list.title', type.name}</h2>
+    <h2 id="crudListTitle">Хэрэглэгчид</h2>
 
     <div id="crudListSearch">
         #{crud.search /}
     </div>
 	
     <div id="crudListTable">
-        #{crud.table fields:['firstName', 'lastName', 'email', 'isAdmin', 'Application', 'applicationStatus']}
+        #{crud.table fields:['id', 'firstName', 'lastName', 'email', 'isAdmin', 'Application', 'applicationStatus']}
         	#{crud.custom 'Application'}
   				<a href="@{Admin.showProfile(object.id)}">
-   					Review
+   					Харах
   				</a>
  			#{/crud.custom}
  			#{crud.custom 'applicationStatus'}

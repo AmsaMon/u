@@ -22,8 +22,8 @@ public class Users extends CRUD{
 	 * renders the page to show User info
 	 */
 	public static void show(Long id) {
-		User user = User.findById(id);
-		render(user);
+		User other = User.findById(id);
+		render(other);
 	}
 	
 	/*

@@ -31,7 +31,7 @@ public class Sign extends Controller {
 			@Required String lastName,
 			@Required String email,
 			@Required String password,
-			@Equals(value="password", message ="Passwords do not match")  
+			@Equals(value="password", message ="Нууц үг таарахгүй байна")  
 			String passwordConfirmation) throws Exception{
 		// Check if the email already exists
 		validation.isTrue("emailExistence", 
