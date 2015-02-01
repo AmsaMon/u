@@ -7,11 +7,11 @@ public class Security extends Secure.Security {
 	@Util
     public static void setConnectedUser() {
 		User user = null;
-        if(Security.isConnected()) {
-            user = User.find("byEmail", connected()).first();
+        if(Security.isConnected() && renderArgs.get("user") == null) {
+            user = getCurrentUser();
             renderArgs.put("isConnected", true);
             renderArgs.put("user", user);
-        }
+        } 
     }
 	
 	public static boolean authenticate(String email, String password) {
