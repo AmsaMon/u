@@ -5,15 +5,18 @@
 # Home page
 GET     /                                       Application.index
 
-# Admin								Users.list
+# Admin								
 GET		/admin/users/{id}						Users.show
 POST 	/users/edit								Users.edit
 GET		/admin/showProfile/{userId}				Admin.showProfile
 POST 	/admin/createProfile					Admin.createProfile
 
 # Users
-GET		/signup									Users.signup
-GET		/login									Users.login
+# nothing here now
+
+# Sign
+GET		/signup									Sign.signup
+GET		/login									Sign.login 
 
 # Profiles
 GET 	/profiles/show							Profiles.show

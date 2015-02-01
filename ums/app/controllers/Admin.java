@@ -1,10 +1,18 @@
 package controllers;
 
+import play.mvc.Before;
 import play.mvc.Controller;
+import play.mvc.With;
 import models.Profile;
 import models.User;
-
+@With(Secure.class)
+@Check("admin")
 public class Admin extends Controller{
+	
+	@Before
+    static void setConnectedUser() {
+        Security.setConnectedUser();
+    }
 	
 	public static void showProfile(Long userId) {
 		User user = User.findById(userId);

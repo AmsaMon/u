@@ -6,13 +6,15 @@
 			<li><a class="white-text transparent-hover" href="@{Application.index}">AMSA</a></li>
         	#{if user}
         		<li><a class="white-text transparent-hover" href="@{Profiles.show}"> ${user.firstName}</a></li>
-				<li><a class="white-text transparent-hover" href="@{Users.users}">Users</a></li>
+        		#{if user?.isAdmin}
+					<li><a class="white-text transparent-hover" href="@{Users.users}">Users</a></li>
+				#{/if}
         		<li><a class="white-text transparent-hover" href="@{Secure.logout}">Log out</a></li>
 			#{/if}
 			#{else}
-        		<li><a class="white-text transparent-hover" href="@{Users.signup}">Sign up</a></li>
+        		<li><a class="white-text transparent-hover" href="@{Sign.signup}">Sign up</a></li>
 				<li>
-					#{include 'Users/tags/loginForm.html'/}
+					#{include 'Sign/tags/loginForm.html'/}
 				</li>
 			#{/else}
 		</ul>
